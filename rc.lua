@@ -168,7 +168,7 @@ mailicon.image = image(beautiful.widget_mail)
 mailwidget = widget({ type = "textbox" })
 local maildir = home .. "/Mail"
 vicious.register(mailwidget, vicious.widgets.mdir, "$1", 181,
-	{maildir .. "/GMX", maildir .. "/Uni", maildir .. "/CS", home .. "/Google", home .. "/Invader", 15})
+	{maildir .. "/GMX", maildir .. "/Uni", maildir .. "/CS", maildir .. "/Google", maildir .. "/Invader", 15})
 mailwidget:buttons(awful.util.table.join(
   awful.button({ }, 1, function () exec(terminal .. " -e mutt -y") end),
   awful.button({ }, 3, function () vicious.force({mailwidget,}) end)
@@ -616,5 +616,6 @@ run_once("chromium-browser")
 run_once("skype")
 run_once("pidgin")
 run_once("liferea")
+exec(home .. "/.local/bin/toggle-monitor")
 exec(home .. "/.local/bin/export_x_info")
 -- }}}
