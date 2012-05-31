@@ -210,7 +210,7 @@ volwidget:buttons(volbar.widget:buttons())
 dateicon = widget({ type = "imagebox" })
 dateicon.image = image(beautiful.widget_date)
 datewidget = widget({ type = "textbox" })
-vicious.register(datewidget, vicious.widgets.date, "%d.%m. %R", 61)
+vicious.register(datewidget, vicious.widgets.date, "%a %d.%m. %R", 61)
 cal.register(datewidget, "<span color='red'><b>%s</b></span>")
 -- }}}
 
@@ -385,7 +385,8 @@ globalkeys = awful.util.table.join(
 		awful.key({ }, "XF86Launch1", function () exec("nautilus --no-desktop")  end),
 
 		-- Liferea
-		awful.key({ }, "Pause", function () exec("liferea") end),
+		--awful.key({ }, "Pause", function () exec("liferea") end),
+		awful.key({ }, "Pause", function () exec(terminal .. " -e newsbeuter") end),
 
 		-- Screenshot
 		--awful.key({ }, "Print", function () exec("import Screenshot.jpg") end),
@@ -610,12 +611,12 @@ end
 -- Startup {{{
 exec("killall nautilus")
 run_once("/usr/sbin/thinkfan")
-run_once("dropboxd")
-run_once("gpodder")
+run_once("dropbox", "dropbox start")
+--run_once("gpodder")
 run_once("chromium-browser")
 run_once("skype")
 run_once("pidgin")
-run_once("liferea")
-exec(home .. "/.local/bin/toggle-monitor")
+--run_once("liferea")
+--exec(home .. "/.local/bin/toggle-monitor")
 exec(home .. "/.local/bin/export_x_info")
 -- }}}
